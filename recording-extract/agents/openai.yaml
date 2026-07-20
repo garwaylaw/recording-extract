@@ -1,0 +1,4 @@
+interface:
+  display_name: "录音文字萃取"
+  short_description: "从录音转写稿、飞书妙记文字记录和文档中萃取重点内容。"
+  default_prompt: "请按录音文字萃取规则，整理这份转写稿的重点内容。"
