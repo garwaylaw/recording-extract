@@ -1,64 +1,64 @@
 ---
 name: recording-extract
-description: Extract structured notes from already-transcribed recording text. Use when the user provides a Feishu/Lark Minutes link with a text record, a Feishu/Lark doc, a Word/TXT/Markdown transcript, or pasted transcript text, and asks to extract key content, summarize meeting records, organize customer/market feedback, or produce a structured extraction document. This skill does not perform audio or video transcription.
+description: 从已经转写好的录音文字中萃取结构化内容。用户提供飞书妙记文字记录、飞书文档、Word/TXT/Markdown 转写稿或直接粘贴转写文本，并要求提取重点、整理会议记录、梳理客户/市场反馈或生成结构化萃取文档时使用。本 Skill 不处理音频或视频转写。
 ---
 
-# Recording Extract
+# 录音文字萃取
 
-## Overview
+## 概述
 
-Use this skill to turn recording transcripts into structured extraction notes. The input is assumed to already be text: a Feishu/Lark Minutes text record, Feishu/Lark document, Word/TXT/Markdown file, or pasted transcript.
+使用本 Skill 将录音转写稿整理成结构化萃取内容。默认输入已经是文字，例如飞书妙记【文字记录】、飞书文档、Word/TXT/Markdown 文件或用户直接粘贴的转写文本。
 
-Do not transcribe audio or video in this skill. If the user provides media files, ask for the transcript or use another workflow outside this skill.
+本 Skill 不负责音频或视频转写。如果用户提供的是媒体文件，应请用户先提供转写稿，或改用其他转写流程。
 
-## Workflow
+## 处理流程
 
-1. **Acquire text**
-   - Feishu/Lark Minutes: obtain the text record / transcript when available. If an API transcript download fails, use the visible "text record" page content when accessible.
-   - Feishu/Lark documents: use the Lark document tools when available.
-   - Word/TXT/Markdown/local documents: read the document text directly.
-   - Pasted text: use the pasted content directly.
+1. **获取文字内容**
+   - 飞书妙记：优先获取【文字记录】或逐字稿。若接口下载逐字稿失败，可在权限允许时读取页面可见的【文字记录】内容。
+   - 飞书文档：使用飞书文档工具读取内容。
+   - Word/TXT/Markdown/本地文档：直接读取文档文字。
+   - 用户粘贴文本：直接使用粘贴内容。
 
-2. **Classify the content type**
-   - Internal problem-discussion meeting: focus on the problem, background/reasons, improvement direction, and next actions.
-   - Internal review/summary meeting: focus on review content, conclusions, lessons, and improvement plans.
-   - External dialogue: focus on market information, customer feedback, cooperation needs, business opportunities, and suggestions for product/sales/service/operations.
+2. **判断内容类型**
+   - 公司内部问题讨论会：重点记录问题本身、背景/原因、改善方向和后续行动。
+   - 公司内部复盘/总结会：重点记录复盘事实、结论、经验教训和改善计划。
+   - 与外部人员的交流：重点记录市场信息、客户反馈、合作诉求、业务机会，以及对产品、销售、服务或运营动作的建议。
 
-3. **Correct obvious transcript errors**
-   - First check `references/keyword-corrections.md`.
-   - If the user has an Obsidian vault, Logseq vault, Markdown knowledge base, entity index, product index, customer list, or similar source, search it for candidate brands, products, customers, concepts, and model names.
-   - Correct only errors with clear semantic evidence. Do not mechanically replace all similar-sounding words.
+3. **纠正明显转写误词**
+   - 先查看 `references/keyword-corrections.md`。
+   - 如果用户有 Obsidian、Logseq、Markdown 知识库、实体索引、产品索引、客户名单或类似资料，应检索其中的品牌、产品、客户、概念和型号名称。
+   - 只纠正有明确上下文依据的错误，不机械替换所有近音词。
 
-4. **Extract key content**
-   - Preserve the original meaning and useful context.
-   - Record important content in relatively detailed form; do not over-compress.
-   - Keep important numbers inside their relevant context; do not create a separate number summary unless the user asks.
-   - Emphasize improvements, suggestions, plans, responsibilities, follow-up items, and clear time nodes.
-   - If no explicit next plan exists, do not force a "next steps" section.
+4. **萃取重点内容**
+   - 保留原文意思和必要上下文。
+   - 对重点内容作相对详细记录，不做过度压缩。
+   - 重要数值保留在相关上下文中；除非用户要求，不单独做数值汇总。
+   - 重点记录改善、建议、计划、责任分工、后续跟进事项和明确时间节点。
+   - 如果原文没有明确下一步计划，不强行设置“后续计划”章节。
 
-5. **Output**
-   - Default to Markdown with a clear title and sections.
-   - Save locally when the user expects a file. Use a filename like `<source-title>_内容萃取.md`.
-   - Export Word or PDF only when requested.
+5. **输出**
+   - 默认输出 Markdown，标题和章节清晰。
+   - 用户需要文件时保存到本地，文件名可使用 `<来源标题>_内容萃取.md`。
+   - 只有用户要求时才导出 Word 或 PDF。
 
-## Detailed Rules
+## 详细规则
 
-Read `references/extraction-rules.md` when performing an extraction.
+执行萃取时读取 `references/extraction-rules.md`。
 
-Read `references/keyword-corrections.md` when correcting transcript terms or when the text contains brands, product names, model numbers, customer names, or domain-specific vocabulary.
+涉及品牌、产品名、型号、客户名、人物名或行业术语校正时，读取 `references/keyword-corrections.md`。
 
-## Maintenance
+## 维护规则
 
-When the user gives a new reusable requirement for transcript extraction, update this skill instead of relying only on conversation memory.
+当用户提出新的、可复用的录音文字萃取要求时，应更新本 Skill，而不是只依赖对话记忆。
 
-- Update `references/extraction-rules.md` for extraction scope, content focus, output structure, source-handling rules, or formatting rules.
-- Update `references/keyword-corrections.md` for reusable term corrections, brand names, product names, model names, customer names, or knowledge-base lookup rules.
-- Do not add one-off instructions that apply only to a single transcript unless the user explicitly says they should become a general rule.
-- Keep the skill text portable for teammates. Avoid hard-coding one user's local paths, account names, or private project assumptions unless they are examples.
-- Preserve the current scope: this skill handles text records and transcript documents, not audio/video transcription.
+- 萃取范围、内容重点、输出结构、资料处理方式、格式规则等，维护到 `references/extraction-rules.md`。
+- 可复用的误词校正、品牌名、产品名、型号名、客户名、人物名或知识库检索规则，维护到 `references/keyword-corrections.md`。
+- 只适用于单份转写稿的一次性要求，不要写入 Skill，除非用户明确说要变成通用规则。
+- 保持 Skill 适合同事复用，避免写死某个用户的本地路径、账号或私人项目假设；如需说明路径，用示例方式表达。
+- 保持当前范围：本 Skill 只处理文字记录和转写文档，不处理音频/视频转写。
 
-## Failure Handling
+## 异常处理
 
-- If full transcript access fails but AI notes/chapters are available, produce a limited extraction only when useful and clearly mark the source limitation in the output.
-- If a Feishu/Lark text record requires login or permission, ask the user to provide access, the text record link, or copied transcript text.
-- Do not invent missing details, speaker identities, timelines, or action items.
+- 如果无法取得完整逐字稿，但能取得 AI 纪要或章节，可在有价值时生成受限版本，并在输出中明确标注资料限制。
+- 如果飞书妙记【文字记录】需要登录或权限，应请用户提供访问权限、文字记录链接，或直接复制文字内容。
+- 不要自行编造缺失细节、说话人身份、时间线或行动项。

@@ -1,39 +1,39 @@
-# Keyword Corrections
+# 误词校正
 
-Use this file as a maintained list of common transcript correction candidates. Treat entries as candidates, not unconditional replacements.
+本文件维护常见录音转写误词。表格中的词是“候选校正”，不是无条件替换规则。
 
-## Correction Principles
+## 校正原则
 
-- Correct only when context clearly supports the target term.
-- Do not mechanically replace every occurrence.
-- Be especially careful with model names, brand names, customer names, and numbers.
-- If uncertain, keep the original wording or mark the term as uncertain.
-- If the user provides an Obsidian vault or similar knowledge base, search it before deciding.
+- 只有上下文明确支持目标词时才校正。
+- 不机械替换所有近音词。
+- 型号、品牌名、客户名、人物名和数值要特别谨慎。
+- 无法确认时保留原词，或在萃取中谨慎标注为“疑似/待确认”。
+- 如果用户提供 Obsidian 或类似知识库，应先检索知识库再判断。
 
-## Optional Knowledge Base Lookup
+## 可选知识库检索
 
-When available, search the user's knowledge base for entities and concepts:
+如果使用者有 Obsidian、Logseq、Markdown 知识库或类似资料，应检索其中的实体和概念：
 
-- Obsidian `index.md`
-- Entity, concept, product, customer, and source index files
-- `wiki/`, `concepts/`, `products/`, `sources/`, or similar folders
-- Any user-provided brand list, product list, customer list, or glossary
+- Obsidian 的 `index.md`
+- 实体、概念、产品、客户、来源索引文件
+- `wiki/`、`concepts/`、`products/`、`sources/` 等类似目录
+- 用户提供的品牌表、产品表、客户名单、术语表
 
-Recommended search targets:
+建议优先检索：
 
-- Brand names
-- Product names
-- Product series
-- Model numbers
-- Customer/company names
-- People names
-- Industry concepts
+- 品牌名
+- 产品名
+- 产品系列
+- 型号
+- 客户/公司名称
+- 人物名
+- 行业概念
 
-If the fixed correction list conflicts with a knowledge-base entity, prefer the current transcript context plus the knowledge-base entity.
+如果固定误词表和知识库实体存在冲突，应结合当前转写稿上下文和知识库实体判断。
 
-## Common Corrections From Prior Usage
+## 常见误词表
 
-| Misrecognized | Correct |
+| 误识别 | 正确词 |
 |---|---|
 | 汉高 | 悍高 |
 | 韩高 | 悍高 |
@@ -64,8 +64,8 @@ If the fixed correction list conflicts with a knowledge-base entity, prefer the 
 | 达芬骑 | 达芬奇 |
 | 格尼迪 | 哥尼迪 |
 
-## Maintenance
+## 维护方式
 
-When a user corrects a term, update this file if the correction is generally reusable by the team.
+当用户纠正某个词，并且该校正对团队具有通用价值时，更新本文件。
 
-Do not add one-off corrections that apply only to a single document unless the user explicitly wants them preserved.
+只适用于单份文档的一次性校正不要写入本文件，除非用户明确要求保留为通用规则。

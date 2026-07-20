@@ -1,107 +1,107 @@
-# Extraction Rules
+# 萃取规则
 
-## Input Scope
+## 输入范围
 
-This skill handles text-only transcript materials:
+本 Skill 只处理文字类录音资料：
 
-- Feishu/Lark Minutes text records
-- Feishu/Lark documents
-- Word documents
-- TXT or Markdown transcripts
-- Pasted transcript text
+- 飞书妙记【文字记录】
+- 飞书文档
+- Word 文档
+- TXT 或 Markdown 转写稿
+- 用户直接粘贴的转写文本
 
-It does not handle audio/video transcription.
+本 Skill 不处理音频或视频转写。
 
-## Rule Maintenance
+## 规则维护
 
-When the user adds a new reusable extraction requirement, update the skill files:
+当用户新增可复用的萃取要求时，应更新 Skill 文件：
 
-- Put extraction logic, classification rules, source-handling rules, and output-format rules in this file.
-- Put reusable misrecognition corrections and knowledge-base lookup rules in `keyword-corrections.md`.
-- Keep single-document instructions out of the skill unless the user says the instruction should become a general rule.
-- Keep rules portable for GitHub teammates. Prefer configurable examples over personal local paths.
+- 萃取逻辑、内容分类规则、资料处理规则、输出格式规则，维护在本文件。
+- 可复用的误词校正和知识库检索规则，维护在 `keyword-corrections.md`。
+- 单份文档的一次性要求不要写入 Skill，除非用户明确要求变成通用规则。
+- 保持规则适合同事通过 GitHub 复用。优先使用可配置示例，不写死个人本地路径。
 
-## Content Classification
+## 内容类型判断
 
-Classify the transcript before extracting.
+萃取前先判断转写稿类型。
 
-### Internal Problem-Discussion Meeting
+### 公司内部问题讨论会
 
-Prioritize:
+优先记录：
 
-- The problem itself
-- Background and causes
-- Constraints and disagreements
-- Improvement direction
-- Next actions, owners, and time nodes when stated
+- 问题本身
+- 问题背景和原因
+- 约束条件和分歧
+- 改善方向
+- 原文明确提到的后续行动、责任人和时间节点
 
-### Internal Review or Summary Meeting
+### 公司内部复盘或总结会
 
-Prioritize:
+优先记录：
 
-- Review facts and data
-- Conclusions
-- Lessons learned
-- Improvement plans
-- Replicable methods or cases
+- 复盘事实和数据
+- 复盘结论
+- 经验教训
+- 改善计划
+- 可复制的方法或案例
 
-### External Dialogue
+### 与外部人员的交流
 
-Prioritize:
+优先记录：
 
-- Market information
-- Customer feedback
-- Competitor information
-- Cooperation demands
-- Business opportunities
-- Suggestions for products, sales, service, operations, or management
+- 市场信息
+- 客户反馈
+- 竞品信息
+- 合作诉求
+- 业务机会
+- 对产品、销售、服务、运营或经营管理的建议
 
-## Extraction Style
+## 萃取风格
 
-- Stay faithful to the transcript.
-- Do not over-summarize key content.
-- Do not add unsupported speculation.
-- Reorder and structure content for readability without changing meaning.
-- Remove obvious repetition and low-value chatter.
-- Preserve context that helps the reader understand why a point matters.
+- 忠于转写稿原意。
+- 重点内容不要过度概括。
+- 不添加无依据推测。
+- 可以调整表达顺序和结构，但不能改变原意。
+- 删除明显重复和低价值闲聊。
+- 保留有助于理解事项重要性的上下文。
 
-## Numbers
+## 数值处理
 
-Keep important numbers in context, including:
+重要数值应放在对应上下文中保留，包括：
 
-- Amounts
-- Prices
-- Quantities
-- Dates and times
-- Ratios
-- Targets
-- Completion rates
-- Frequency and cycles
-- Growth or decline ranges
+- 金额
+- 价格
+- 数量
+- 日期和时间
+- 比例
+- 目标值
+- 完成度
+- 频次和周期
+- 增长或下降范围
 
-Do not create a separate number-summary section unless the user asks.
+除非用户要求，不要单独创建“数值汇总”章节。
 
-## Improvements, Suggestions, and Plans
+## 改善、建议和计划
 
-Record these carefully when present:
+原文出现以下内容时要重点记录：
 
-- Improvement direction
-- Problem correction
-- Suggestions
-- Next plans
-- To-do items
-- Responsibilities
-- Follow-up items
-- Explicit time nodes
+- 改善方向
+- 问题修正
+- 建议
+- 下一步计划
+- 待办事项
+- 责任分工
+- 后续跟进事项
+- 明确时间节点
 
-If the transcript does not explicitly mention next plans or follow-up arrangements, omit that section instead of inventing one.
+如果转写稿没有明确提到下一步计划或后续安排，不要自行编造该章节。
 
-## Suggested Markdown Structure
+## 建议 Markdown 结构
 
-Use this structure flexibly:
+可根据内容灵活使用以下结构：
 
 ```markdown
-# <Title>｜内容萃取
+# <标题>｜内容萃取
 
 ## 基本信息
 
@@ -130,4 +130,4 @@ Use this structure flexibly:
 ...
 ```
 
-Only include sections supported by the transcript.
+只保留转写稿中有依据的章节。
